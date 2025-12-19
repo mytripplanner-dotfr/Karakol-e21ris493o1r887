@@ -1,0 +1,682 @@
+
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aventure au Cœur du Tian Shan : Karakol et les Trésors d'Issyk-Kul </title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+      tailwind.config = {
+          theme: {
+              extend: {
+                  colors: {
+                      template: {
+                          sable: '#FFEDD5', 
+                          ocre: '#F97316',   // Orange Vibrant (Brand Accent)
+                          roche: '#0F172A',  // Bleu Nuit (Brand Dark)
+                          ciel: '#0D9488',   // Vert Lagon (Brand Primary)
+                          bg: '#FFF7ED'      // C'est un blanc cassé chaud, parfait pour la lecture et le contraste.
+                      }
+                  },
+                  fontFamily: {
+                      sans: ['"Plus Jakarta Sans"', 'sans-serif'], // Nouvelle police corps
+                      serif: ['"Outfit"', 'sans-serif'],           // Nouvelle police titres
+                  }
+              }
+          }
+      }
+    </script>
+    <style>
+        body { overflow-x: hidden; }
+        
+        /* 2. FORÇAGE DES GRAISSES (Comme sur la Landing Page) */
+        .font-sans { font-weight: 600 !important; }
+        .font-serif { font-weight: 800 !important; }
+
+        /* Ligne verticale de la timeline */
+        .timeline-line {
+            position: absolute;
+            left: 24px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #E5E7EB;
+            z-index: 0;
+        }
+
+        @media (min-width: 768px) {
+            .timeline-line { left: 50%; margin-left: -1px; }
+        }
+
+        /* Style des cartes Info */
+        .tip-card {
+            border-left: 4px solid #F97316; /* ocre */
+            background-color: #FFF7ED;
+        }
+
+        /* Masquer la scrollbar de la nav mobile tout en gardant le scroll */
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-template-bg text-template-roche antialiased">
+    
+    <nav id="nav-desktop" class="hidden md:flex fixed top-0 w-full z-50 bg-white/90 backdrop-blur border-b border-gray-200 py-4 px-8 justify-between items-center shadow-sm transition-transform duration-300 -translate-y-full">
+        <a href="#top" class="text-xl font-serif font-bold tracking-widest text-template-roche">MyTrip<span class="text-template-ocre">Planner</span></a>
+        <div class="space-x-6 text-sm font-bold text-gray-600">
+            <a href="#jour-1" class="nav-item-desktop hover:text-template-ocre transition">Le Parcours</a>
+            <a href="#pratique" class="nav-item-desktop hover:text-template-ocre transition">Infos Pratiques</a>
+        </div>
+    </nav>
+
+    <nav id="nav-mobile" class="md:hidden fixed top-0 w-full z-50 bg-white/95 backdrop-blur border-b border-gray-200 py-3 pl-4 overflow-x-auto hide-scroll whitespace-nowrap shadow-md transition-transform duration-300 -translate-y-full">
+        <div class="flex space-x-2 pr-4" id="mobile-menu-container">
+            <a href="#top" class="inline-block px-3 py-1 bg-template-roche text-white rounded-full text-xs font-bold shadow-sm">Top</a>
+            
+                <a href="#jour-1" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J1 Arrivée à Karakol : Immersion Douce</a>
+            
+                <a href="#jour-2" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J2 Trésors Historiques et Culturels de Karakol</a>
+            
+                <a href="#jour-3" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J3 Les Roches Rouges de Jeti-Oguz</a>
+            
+                <a href="#jour-4" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J4 Altyn Arashan : Paradis des Sources Chaudes</a>
+            
+                <a href="#jour-5" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J5 Canyon de Skazka et Cascade de Barskoon</a>
+            
+                <a href="#jour-6" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J6 Marché Local et Saveurs Kirghizes</a>
+            
+                <a href="#jour-7" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J7 Randonnée dans la Gorge de Karakol</a>
+            
+                <a href="#jour-8" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J8 Culture Nomade et Rive Sud d'Issyk-Kul</a>
+            
+                <a href="#jour-9" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J9 Pétroglyphes et Centre Culturel de Cholpon-Ata</a>
+            
+                <a href="#jour-10" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J10 Jyrgalan : Vallée Secrète et Aventure</a>
+            
+                <a href="#jour-11" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J11 Journée Libre et Détente à Karakol</a>
+            
+                <a href="#jour-12" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J12 Retour à Bichkek et Première Découverte</a>
+            
+                <a href="#jour-13" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J13 Bichkek : Capitale entre Histoire et Modernité</a>
+            
+                <a href="#jour-14" class="mobile-link inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold hover:bg-template-sable transition-all duration-300">J14 Départ de Bichkek</a>
+            
+            <a href="#pratique" class="mobile-link inline-block px-3 py-1 border border-gray-300 text-gray-500 rounded-full text-xs font-bold">Infos</a>
+        </div>
+    </nav>
+
+    <header id="top" class="relative h-[60vh] flex items-center justify-center bg-cover bg-center"
+            style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)), url('https://raw.githubusercontent.com/mytripplanner-dotfr/Karakol-e21ris493o1r887/main/header.png" || 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2021'}');">
+        
+        <div class="relative z-20 text-center text-white px-4 max-w-3xl animate-fade-in-up">
+            <p class="font-sans text-template-sable tracking-[0.2em] mb-4 uppercase text-xs font-bold">Feuille de Route</p>
+            <h1 class="font-serif text-5xl md:text-8xl mb-6 leading-tight drop-shadow-lg">KARAKOL</h1>
+            <p class="font-sans text-lg md:text-xl text-gray-100 mb-10 font-medium max-w-2xl mx-auto leading-relaxed">Aventure au Cœur du Tian Shan : Karakol et les Trésors d'Issyk-Kul</p>
+            
+            <div class="flex flex-wrap justify-center gap-4 text-sm font-bold mb-10">
+                <span class="bg-white/20 backdrop-blur-md px-5 py-2 rounded-full border border-white/30 shadow-sm">🗓️ 14 jours</span>
+                <span class="bg-white/20 backdrop-blur-md px-5 py-2 rounded-full border border-white/30 shadow-sm">💰 2000€</span>
+                <span class="bg-white/20 backdrop-blur-md px-5 py-2 rounded-full border border-white/30 shadow-sm">🛬 environ 9h avec escale depuis Tanguy, Russie</span>
+            </div>
+        </div>
+    </header>
+
+    <section id="itineraire" class="max-w-6xl mx-auto px-4 py-16 relative">
+        <div class="text-center mb-16">
+            <h2 class="text-template-ocre font-bold tracking-normal text-4xl mt-2 uppercase font-serif">Votre Roadtrip</h2>
+        </div>
+
+        <div class="relative">
+            <div class="timeline-line"></div>
+            
+                <div id="jour-1" class="section-etape relative z-10 mb-20 md:flex md:flex-row-reverse md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-roche rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-left md:pl-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 1</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Arrivée à Karakol : Immersion Douce</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Après un long voyage depuis la Russie, vous atterrirez à Bichkek avant de prendre la route vers Karakol. Cette première journée est dédiée à l'installation et à une découverte légère de votre environnement. Laissez-vous imprégner par l'atmosphère paisible de cette ville au pied des montagnes, porte d'entrée vers des paysages grandioses.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🛬 <strong>Arrivée et transfert</strong> : Voyagez de l'aéroport de Bichkek à Karakol en "marshrutka" (minibus local) ou en taxi partagé, une expérience authentique de la vie kirghize.</li><li>🛏️ <strong>Installation à l'hôtel</strong> : Prenez le temps de vous installer dans votre hôtel 3 étoiles, de vous rafraîchir et de vous reposer après le trajet.</li><li>🚶‍♂️ <strong>Première balade exploratoire</strong> : Promenez-vous tranquillement dans les rues avoisinantes de votre hôtel pour repérer les premiers commerces et sentir l'ambiance locale.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pr-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Karakol-e21ris493o1r887/main/jour1.jpg" class="w-full h-64 object-cover" alt="Jour 1">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">ℹ️ À savoir</p>
+                                <p class="text-gray-700">Le trajet Bichkek-Karakol dure environ 5 à 7 heures. Prévoyez des encas et de l'eau.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">💡 Conseil</p>
+                                <p class="text-gray-700">Changez un peu d'argent à l'aéroport ou à Bichkek pour les petites dépenses immédiates.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-2" class="section-etape relative z-10 mb-20 md:flex  md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ocre rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-right md:pr-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 2</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Trésors Historiques et Culturels de Karakol</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Plongez au cœur de l'histoire et de la diversité culturelle de Karakol. Cette journée vous fera découvrir des édifices uniques, témoins des influences russes et dounganes, ainsi que l'héritage d'un explorateur russe légendaire. Une immersion fascinante dans le passé de cette ville carrefour.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🕌 <strong>Visite de la Mosquée Doungane</strong> : Admirez cette mosquée en bois sans clous, construite par des artisans chinois pour la communauté doungane, un chef-d'œuvre architectural unique en son genre.</li><li>⛪ <strong>Découverte de la Cathédrale Orthodoxe de la Sainte-Trinité</strong> : Explorez cette magnifique cathédrale en bois, emblème de l'héritage russe de Karakol, avec ses icônes précieuses et son atmosphère sereine.</li><li>🏛️ <strong>Musée Prjevalski</strong> : Visitez le musée dédié à Nikolaï Prjevalski, célèbre explorateur russe, et découvrez ses expéditions en Asie Centrale, ses collections et son impact sur la région.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pl-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Karakol-e21ris493o1r887/main/jour2.jpg" class="w-full h-64 object-cover" alt="Jour 2">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🚶 Déplacement</p>
+                                <p class="text-gray-700">Les principaux sites de Karakol sont accessibles à pied ou via de courts trajets en taxi local.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">📸 Photographie</p>
+                                <p class="text-gray-700">Demandez toujours la permission avant de photographier les personnes, surtout dans les lieux de culte.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-3" class="section-etape relative z-10 mb-20 md:flex md:flex-row-reverse md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ciel rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-left md:pl-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 3</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Les Roches Rouges de Jeti-Oguz</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Aujourd'hui, partez à la découverte de la spectaculaire gorge de Jeti-Oguz, célèbre pour ses formations rocheuses rouges emblématiques. Entre légendes locales et paysages à couper le souffle, cette journée vous offrira une immersion totale dans la nature kirghize, avec la possibilité d'une balade à cheval.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>❤️ <strong>Exploration des "Sept Taureaux" et du "Cœur Brisé"</strong> : Admirez les formations rocheuses rouges emblématiques de Jeti-Oguz, dont les légendes locales racontent des histoires d'amour et de trahison.</li><li>🐎 <strong>Randonnée à cheval dans la gorge</strong> : Profitez d'une balade à cheval le long de la rivière, traversant des prairies verdoyantes et des forêts de sapins, pour une expérience authentique de la vie nomade.</li><li>♨️ <strong>Bains thermaux de Jeti-Oguz</strong> : Détendez-vous dans les sources chaudes naturelles de la station thermale de Jeti-Oguz, réputées pour leurs propriétés curatives et leur cadre apaisant.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pr-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Karakol-e21ris493o1r887/main/jour3.jpg" class="w-full h-64 object-cover" alt="Jour 3">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🚌 Transport</p>
+                                <p class="text-gray-700">Des "marshrutkas" régulières relient Karakol à Jeti-Oguz. Le trajet dure environ 45 minutes.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">💰 Coût</p>
+                                <p class="text-gray-700">La balade à cheval est une activité payante, négociez le prix avec les locaux.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-4" class="section-etape relative z-10 mb-20 md:flex  md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-roche rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-right md:pr-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 4</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Altyn Arashan : Paradis des Sources Chaudes</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Préparez-vous pour une journée d'aventure vers Altyn Arashan, une vallée alpine isolée réputée pour ses sources chaudes naturelles et ses paysages époustouflants. C'est l'occasion de s'immerger dans une nature préservée, de faire une randonnée revigorante et de se détendre dans des eaux curatives.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🚙 <strong>Trajet en 4x4 vers Altyn Arashan</strong> : Vivez une aventure en 4x4 sur une piste accidentée, traversant des paysages de montagne spectaculaires pour atteindre cette vallée isolée.</li><li>🚶‍♀️ <strong>Randonnée panoramique</strong> : Explorez les environs d'Altyn Arashan à pied, en admirant les sommets enneigés, les forêts de sapins et les prairies alpines fleuries.</li><li>🛀 <strong>Baignade dans les sources chaudes naturelles</strong> : Plongez dans les bassins d'eau chaude sulfureuse, nichés au cœur de la nature, pour une relaxation profonde et une expérience inoubliable.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pl-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Karakol-e21ris493o1r887/main/jour4.jpg" class="w-full h-64 object-cover" alt="Jour 4">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🎒 Équipement</p>
+                                <p class="text-gray-700">Prévoyez de bonnes chaussures de marche, un maillot de bain et une serviette.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🌡️ Température</p>
+                                <p class="text-gray-700">Même en été, les soirées peuvent être fraîches en altitude, prévoyez des couches de vêtements.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-5" class="section-etape relative z-10 mb-20 md:flex md:flex-row-reverse md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ocre rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-left md:pl-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 5</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Canyon de Skazka et Cascade de Barskoon</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Cette journée vous transportera dans un monde de contes de fées avec le Canyon de Skazka, où les formations rocheuses sculptées par le vent et l'eau évoquent des créatures fantastiques. Vous découvrirez ensuite la majestueuse cascade de Barskoon, un havre de fraîcheur et de beauté naturelle.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🧚 <strong>Exploration du Canyon de Skazka (Canyon des Contes de Fées)</strong> : Laissez libre cours à votre imagination en parcourant ce canyon aux couleurs vives, dont les roches prennent des formes d'animaux, de châteaux et de personnages mythiques.</li><li>💦 <strong>Randonnée à la Cascade de Barskoon</strong> : Marchez à travers une forêt luxuriante pour atteindre la puissante cascade de Barskoon, où l'eau s'écoule en plusieurs paliers, offrant un spectacle rafraîchissant.</li><li>📸 <strong>Points de vue panoramiques</strong> : Profitez des nombreux points de vue le long de la route pour immortaliser les paysages grandioses du lac Issyk-Kul et des montagnes environnantes.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pr-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Karakol-e21ris493o1r887/main/jour5.jpg" class="w-full h-64 object-cover" alt="Jour 5">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">☀️ Protection</p>
+                                <p class="text-gray-700">Le soleil peut être intense dans le canyon, prévoyez chapeau, crème solaire et eau.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🚗 Accès</p>
+                                <p class="text-gray-700">Ces sites sont accessibles en taxi partagé ou en louant un véhicule avec chauffeur depuis Karakol.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-6" class="section-etape relative z-10 mb-20 md:flex  md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ciel rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-right md:pr-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 6</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Marché Local et Saveurs Kirghizes</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Immergez-vous dans l'effervescence du marché de Karakol, un véritable kaléidoscope de couleurs, de sons et d'odeurs. C'est l'occasion de découvrir les produits locaux, d'échanger avec les habitants et de goûter aux spécialités culinaires kirghizes, pour une expérience authentique et gourmande.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🥕 <strong>Visite du marché de Karakol</strong> : Flânez entre les étals colorés, découvrez les fruits, légumes, épices et produits artisanaux locaux, et observez le quotidien des habitants.</li><li>🍜 <strong>Cours de cuisine Doungane ou Ouïghoure</strong> : Participez à un atelier pour apprendre à préparer des plats traditionnels comme le "laghman" (nouilles faites maison) ou le "manty" (raviolis à la vapeur), et savourez votre création.</li><li>☕ <strong>Dégustation de thé et pâtisseries locales</strong> : Faites une pause dans un "chaikhana" (salon de thé) pour déguster du thé noir ou vert accompagné de "boorsok" (beignets) ou d'autres douceurs.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pl-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Karakol-e21ris493o1r887/main/jour6.jpg" class="w-full h-64 object-cover" alt="Jour 6">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🗣️ Négociation</p>
+                                <p class="text-gray-700">Au marché, la négociation est courante, mais toujours avec le sourire et respect.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🍽️ Spécialités</p>
+                                <p class="text-gray-700">Ne manquez pas de goûter le "ashlyan-fu", une soupe froide doungane rafraîchissante.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-7" class="section-etape relative z-10 mb-20 md:flex md:flex-row-reverse md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-roche rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-left md:pl-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 7</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Randonnée dans la Gorge de Karakol</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Aujourd'hui, chaussez vos bottes de randonnée pour explorer la magnifique gorge de Karakol. Cette journée vous mènera à travers des forêts de sapins, le long de rivières tumultueuses et vers des panoramas alpins époustouflants. Une immersion totale dans la nature sauvage du Tian Shan, loin de l'agitation.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🌲 <strong>Trek vers le camp de base de Karakol</strong> : Empruntez les sentiers balisés qui serpentent à travers la forêt, offrant des vues imprenables sur les sommets environnants et la rivière.</li><li>🏞️ <strong>Pique-nique en pleine nature</strong> : Profitez d'un déjeuner en plein air au bord de la rivière ou sur un promontoire, entouré par la beauté majestueuse des montagnes.</li><li>🧘 <strong>Moment de contemplation</strong> : Prenez le temps d'apprécier le silence et la sérénité de la montagne, de respirer l'air pur et de vous ressourcer au cœur de la nature.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pr-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Karakol-e21ris493o1r887/main/jour7.jpg" class="w-full h-64 object-cover" alt="Jour 7">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">👟 Chaussures</p>
+                                <p class="text-gray-700">Des chaussures de randonnée robustes sont indispensables pour cette journée.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">💧 Hydratation</p>
+                                <p class="text-gray-700">Emportez suffisamment d'eau et quelques snacks énergétiques pour la randonnée.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-8" class="section-etape relative z-10 mb-20 md:flex  md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ocre rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-right md:pr-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 8</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Culture Nomade et Rive Sud d'Issyk-Kul</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Partez à la découverte de la rive sud du lac Issyk-Kul, une région riche en traditions nomades. Cette journée vous offrira un aperçu fascinant de la culture kirghize, avec une démonstration de chasse à l'aigle et la possibilité de visiter un atelier de fabrication de feutre, emblème de l'artisanat local.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🦅 <strong>Démonstration de chasse à l'aigle</strong> : Assistez à une démonstration impressionnante de chasse à l'aigle, une tradition ancestrale kirghize, et apprenez-en plus sur le lien unique entre l'homme et l'oiseau.</li><li>🧶 <strong>Visite d'un atelier de feutre</strong> : Découvrez l'artisanat du feutre, de la tonte de la laine à la création de tapis et d'objets décoratifs, et admirez le savoir-faire des artisans locaux.</li><li>🏖️ <strong>Détente au bord du lac Issyk-Kul</strong> : Profitez d'un moment de calme sur une plage de la rive sud, admirez les eaux bleues du lac et les montagnes en arrière-plan.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pl-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Karakol-e21ris493o1r887/main/jour8.jpg" class="w-full h-64 object-cover" alt="Jour 8">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🚗 Transport</p>
+                                <p class="text-gray-700">Louer un taxi pour la journée est la meilleure option pour explorer la rive sud.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🎁 Souvenirs</p>
+                                <p class="text-gray-700">Les produits en feutre sont d'excellents souvenirs authentiques et durables.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-9" class="section-etape relative z-10 mb-20 md:flex md:flex-row-reverse md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ciel rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-left md:pl-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 9</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Pétroglyphes et Centre Culturel de Cholpon-Ata</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Aujourd'hui, explorez la rive nord du lac Issyk-Kul, une région plus développée mais tout aussi fascinante. Vous découvrirez d'anciens pétroglyphes, témoins de civilisations passées, et un centre culturel moderne qui célèbre la diversité spirituelle et l'histoire du Kirghizistan.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🗿 <strong>Site des Pétroglyphes de Cholpon-Ata</strong> : Marchez parmi des milliers de roches gravées par des civilisations anciennes, représentant des scènes de chasse, des animaux et des symboles mystérieux.</li><li>🕌 <strong>Visite du Centre Culturel Ruh Ordo</strong> : Explorez ce complexe unique qui honore les cinq principales religions du monde et les figures marquantes de la culture kirghize, offrant une perspective sur la tolérance et l'harmonie.</li><li>🚤 <strong>Croisière sur le lac Issyk-Kul</strong> : Profitez d'une courte croisière sur le lac pour admirer les paysages depuis l'eau et ressentir la grandeur de ce "joyau du Kirghizistan".</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pr-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Karakol-e21ris493o1r887/main/jour9.jpg" class="w-full h-64 object-cover" alt="Jour 9">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🚌 Accès</p>
+                                <p class="text-gray-700">Des "marshrutkas" relient Karakol à Cholpon-Ata, mais un taxi est plus flexible.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">📜 Histoire</p>
+                                <p class="text-gray-700">Les pétroglyphes datent de l'âge du bronze jusqu'au Moyen Âge, offrant un aperçu unique de l'histoire.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-10" class="section-etape relative z-10 mb-20 md:flex  md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-roche rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-right md:pr-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 10</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Jyrgalan : Vallée Secrète et Aventure</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Évadez-vous vers la vallée de Jyrgalan, un joyau caché à l'est de Karakol, réputé pour ses paysages immaculés et ses opportunités d'aventure. Cette journée est dédiée à l'exploration de cette vallée préservée, que ce soit à pied ou à cheval, pour une immersion totale dans la nature kirghize.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🐴 <strong>Randonnée à cheval dans la vallée de Jyrgalan</strong> : Partez pour une balade à cheval à travers les vastes prairies et les collines verdoyantes, découvrant des panoramas à couper le souffle.</li><li>🚶‍♀️ <strong>Trek vers les lacs cachés ou les cascades</strong> : Explorez les sentiers de randonnée qui mènent à des lacs alpins isolés ou à des cascades secrètes, loin des foules.</li><li>🏡 <strong>Rencontre avec les habitants</strong> : Partagez un repas ou un thé avec une famille locale pour découvrir leur mode de vie et leur hospitalité chaleureuse.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pl-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Karakol-e21ris493o1r887/main/jour10.jpg" class="w-full h-64 object-cover" alt="Jour 10">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🗺️ Orientation</p>
+                                <p class="text-gray-700">Un guide local est recommandé pour les treks plus longs ou pour trouver les meilleurs spots.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">📶 Connectivité</p>
+                                <p class="text-gray-700">La couverture réseau peut être limitée à Jyrgalan, profitez de la déconnexion.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-11" class="section-etape relative z-10 mb-20 md:flex md:flex-row-reverse md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ocre rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-left md:pl-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 11</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Journée Libre et Détente à Karakol</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Après plusieurs jours d'exploration intense, cette journée est dédiée à la détente et à la découverte à votre rythme. Profitez-en pour revisiter un lieu coup de cœur, faire du shopping, ou simplement vous imprégner de l'ambiance de Karakol. C'est l'occasion de recharger vos batteries avant la fin du voyage.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🛍️ <strong>Shopping de souvenirs</strong> : Flânez dans les boutiques d'artisanat local pour trouver des souvenirs uniques, comme des objets en feutre, des bijoux ou des produits à base de miel.</li><li>☕ <strong>Café et lecture</strong> : Détendez-vous dans un café local, savourez une boisson chaude et lisez un livre ou planifiez vos prochaines aventures.</li><li>🚶‍♂️ <strong>Exploration des quartiers résidentiels</strong> : Promenez-vous dans les rues bordées de maisons en bois colorées, typiques de l'architecture de Karakol, et observez la vie quotidienne.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pr-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Karakol-e21ris493o1r887/main/jour11.jpg" class="w-full h-64 object-cover" alt="Jour 11">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">💡 Suggestion</p>
+                                <p class="text-gray-700">Si vous êtes intéressé, visitez le petit zoo de Karakol, qui abrite des animaux locaux.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">💆 Bien-être</p>
+                                <p class="text-gray-700">Certains hôtels proposent des massages, une bonne option pour se détendre.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-12" class="section-etape relative z-10 mb-20 md:flex  md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ciel rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-right md:pr-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 12</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Retour à Bichkek et Première Découverte</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Après avoir exploré les merveilles de Karakol et de ses environs, il est temps de retourner à Bichkek, la capitale du Kirghizistan. Cette journée sera consacrée au voyage et à une première immersion dans l'ambiance urbaine de la ville, avec une balade légère pour prendre vos marques.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🚌 <strong>Trajet Karakol-Bichkek</strong> : Prenez un "marshrutka" ou un taxi partagé pour retourner à Bichkek, profitant une dernière fois des paysages le long du lac Issyk-Kul.</li><li>🛏️ <strong>Installation à l'hôtel à Bichkek</strong> : Installez-vous dans votre hôtel et prenez un moment pour vous reposer après le voyage.</li><li>🚶‍♀️ <strong>Balade sur l'avenue Chuy</strong> : Promenez-vous le long de l'avenue principale de Bichkek, l'avenue Chuy, pour découvrir l'architecture soviétique et l'ambiance animée de la capitale.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pl-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Karakol-e21ris493o1r887/main/jour12.jpg" class="w-full h-64 object-cover" alt="Jour 12">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">⏰ Timing</p>
+                                <p class="text-gray-700">Le trajet dure environ 5 à 7 heures, partez tôt le matin pour profiter de l'après-midi à Bichkek.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🍽️ Dîner</p>
+                                <p class="text-gray-700">Bichkek offre une grande variété de restaurants, des locaux aux internationaux.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-13" class="section-etape relative z-10 mb-20 md:flex md:flex-row-reverse md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-roche rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-left md:pl-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 13</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Bichkek : Capitale entre Histoire et Modernité</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">Cette journée est dédiée à l'exploration approfondie de Bichkek, une ville qui mélange harmonieusement son héritage soviétique avec une touche de modernité. Vous découvrirez ses places emblématiques, ses musées riches en histoire et ses marchés colorés, pour une immersion complète dans la vie urbaine kirghize.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🏛️ <strong>Visite du Musée Historique d'État</strong> : Plongez dans l'histoire du Kirghizistan, de l'Antiquité à l'ère soviétique, à travers des expositions fascinantes et des artefacts précieux.</li><li>🌳 <strong>Exploration de la Place Ala-Too</strong> : Admirez la place centrale de Bichkek, avec ses monuments imposants, ses fontaines et le changement de la garde, symbole de la fierté nationale.</li><li>🛍️ <strong>Découverte du Bazar d'Osh</strong> : Imprégnez-vous de l'ambiance vibrante de l'un des plus grands marchés d'Asie Centrale, où vous trouverez de tout, des épices aux vêtements, en passant par l'artisanat local.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pr-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Karakol-e21ris493o1r887/main/jour13.jpg" class="w-full h-64 object-cover" alt="Jour 13">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🚶 Déplacement</p>
+                                <p class="text-gray-700">Les sites sont relativement proches, mais les taxis sont abordables pour les plus longues distances.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">💡 Conseil</p>
+                                <p class="text-gray-700">Goûtez au "shashlyk" (brochettes de viande grillée) dans l'un des nombreux stands du bazar.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+                <div id="jour-14" class="section-etape relative z-10 mb-20 md:flex  md:justify-between items-start group scroll-mt-32">
+                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-8 h-8 bg-template-ocre rounded-full border-4 border-white shadow-lg flex items-center justify-center z-20"></div>
+                    
+                    <div class="md:w-[45%] pl-14 md:text-right md:pr-12">
+                        <span class="font-serif text-3xl block text-template-roche mb-2 font-bold">Jour 14</span>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Départ de Bichkek</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed italic mb-4">C'est le dernier jour de votre aventure kirghize. Après avoir exploré les montagnes majestueuses, les lacs scintillants et la culture vibrante du pays, il est temps de prendre votre vol de retour depuis l'aéroport international de Manas. Emportez avec vous des souvenirs inoubliables de cette terre de nomades.</p>
+                        <ul class="text-sm text-gray-700 space-y-2 inline-block text-left font-medium">
+                            <li>🎁 <strong>Derniers achats de souvenirs</strong> : Profitez de vos dernières heures pour acheter des cadeaux de dernière minute ou des spécialités locales.</li><li>🍽️ <strong>Dernier repas kirghize</strong> : Savourez un dernier repas traditionnel pour clore votre voyage en beauté.</li><li>🛫 <strong>Transfert à l'aéroport et vol retour</strong> : Organisez votre transfert vers l'aéroport de Manas (FRU) pour votre vol de retour vers Tanguy, Russie.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pl-14 md:w-[45%] mt-6 md:mt-0 md:pl-12">
+                        <div class="rounded-xl overflow-hidden shadow-lg mb-4">
+                            <img src="https://raw.githubusercontent.com/mytripplanner-dotfr/Karakol-e21ris493o1r887/main/jour14.jpg" class="w-full h-64 object-cover" alt="Jour 14">
+                        </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">⏰ Heure</p>
+                                <p class="text-gray-700">Prévoyez au moins 3 heures avant le vol pour les formalités à l'aéroport.</p>
+                            </div>
+                        
+                            <div class="tip-card p-4 rounded-r-lg text-sm mb-2">
+                                <p class="font-bold text-template-ocre mb-1">🚕 Transfert</p>
+                                <p class="text-gray-700">Réservez un taxi à l'avance pour l'aéroport, le trajet dure environ 30-45 minutes.</p>
+                            </div>
+                        
+                    </div>
+                </div>
+                
+        </div>
+    </section>
+
+    <section id="pratique" class="bg-white border-t border-gray-200 pt-12 pb-12 scroll-mt-24">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-10">
+            <div>
+                <h4 class="font-serif text-xl mb-4 text-template-roche flex items-center gap-2 font-bold">
+                    <span>💴</span> Budget
+                </h4>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2"><strong>Budget vol: </strong>550€/pers (Vol A/R Tanguy/Moscou - Bichkek en classe économique)</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2"><strong>Budget transports: </strong>180€/pers (Marshrutkas, taxis partagés, quelques taxis privés pour excursions)</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2"><strong>Budget repas: </strong>420€/pers (30€/jour pour repas variés, locaux et restaurants de gamme moyenne)</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2"><strong>Budget logement: </strong>650€/pers (50€/nuit pour 13 nuits en hôtels 3 étoiles ou guesthouses confortables)</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2"><strong>Budget activités: </strong>200€/pers (Entrées sites, guides pour treks, balade à cheval, démonstrations culturelles)</p>
+                
+            </div>
+            <div>
+                <h4 class="font-serif text-xl mb-4 text-template-roche flex items-center gap-2 font-bold">
+                    <span>☀️</span> Périodes Idéales
+                </h4>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2">Les périodes idéales pour ce séjour sont les mois de mai-juin et septembre-octobre.</p>
+                
+            </div>
+            <div>
+                <h4 class="font-serif text-xl mb-4 text-template-roche flex items-center gap-2 font-bold">
+                    <span>📃</span> Infos pratiques
+                </h4>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2">🤝 La population kirghize est réputée pour son hospitalité chaleureuse et son attachement aux traditions nomades. N'hésitez pas à échanger, même avec quelques mots de russe.</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2">🏔️ Le Kirghizistan est un pays montagneux enclavé, souvent surnommé "la Suisse de l'Asie Centrale". Son histoire est profondément liée à la Route de la Soie et à l'héritage des empires nomades.</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2">🦅 Une tradition insolite est la chasse à l'aigle, où des chasseurs entraînent des aigles royaux pour chasser de petits animaux. Des démonstrations sont souvent proposées aux touristes.</p>
+                
+                    <p class="text-sm text-gray-600 leading-relaxed mb-2">🥛 Le "kumis", lait de jument fermenté, est une boisson nationale kirghize. Son goût est unique et fait partie intégrante de la culture nomade, à essayer pour une expérience authentique.</p>
+                
+            </div>            
+            <div>
+                <h4 class="font-serif text-xl mb-4 text-template-roche flex items-center gap-2 font-bold">
+                    <span>🔗</span> Liens Utiles
+                </h4>
+                <ul class="text-sm space-y-3">
+                  <li><a href="https://mytripplanner-dotfr.github.io/Karakol-e21ris493o1r887/map.html" target="_blank" class="hover:text-template-ocre transition flex items-center gap-2"><strong>🗺️ Carte Interactive</strong></a></li>
+                    
+                        <li><a href="https://discover.kg/" target="_blank" class="hover:text-template-ocre transition flex items-center gap-2"><strong>📘 Discover Kyrgyzstan</strong></a></li>
+                    
+                        <li><a href="https://www.accuweather.com/fr/kg/karakol/222624/weather-forecast/222624" target="_blank" class="hover:text-template-ocre transition flex items-center gap-2"><strong>🌤️ Météo Karakol</strong></a></li>
+                    
+                        <li><a href="https://www.advantour.com/fr/kirghizistan/transport.htm" target="_blank" class="hover:text-template-ocre transition flex items-center gap-2"><strong>🚌 Voyager en Marshrutka</strong></a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-50 border-t border-slate-200 py-6">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <p class="font-serif text-lg text-template-roche mb-2 font-bold">
+                MyTrip<span class="text-template-ocre">Planner</span>
+            </p>
+
+                <div class="flex justify-center gap-4 text-[10px] md:text-xs text-slate-500 mb-4 font-semibold">
+                    <a href="#" class="hover:text-brand-primary transition hover:underline">Mentions Légales</a>
+                    <a href="#" class="hover:text-brand-primary transition hover:underline">CGU</a>
+                    <a href="#" class="hover:text-brand-primary transition hover:underline">Confidentialité</a>
+                </div>
+
+            <p class="text-[10px] text-gray-400 mb-2">
+                &copy; 2025 MyTripPlanner. Tous droits réservés.
+            </p>
+
+            <div class="flex justify-center">
+                <p class="text-[10px] text-gray-400 uppercase tracking-widest px-2 py-0.5 border border-gray-200 rounded-full inline-block">
+                    🤖 Contenu généré par IA
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Gestion Scroll & Menu
+        const navDesktop = document.getElementById('nav-desktop');
+        const navMobile = document.getElementById('nav-mobile');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                navDesktop.classList.remove('-translate-y-full');
+                navMobile.classList.remove('-translate-y-full');
+            } else {
+                navDesktop.classList.add('-translate-y-full');
+                navMobile.classList.add('-translate-y-full');
+            }
+        });
+        
+        // Active Link Highlighter
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const activeId = entry.target.id;
+                    document.querySelectorAll('.mobile-link').forEach(link => {
+                        const linkHref = link.getAttribute('href').substring(1);
+                        if (linkHref === activeId) {
+                            link.classList.remove('bg-gray-100', 'text-gray-700');
+                            link.classList.add('bg-template-ocre', 'text-white', 'shadow-md');
+                            link.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                        } else {
+                            link.classList.add('bg-gray-100', 'text-gray-700');
+                            link.classList.remove('bg-template-ocre', 'text-white', 'shadow-md');
+                        }
+                    });
+                }
+            });
+        }, { rootMargin: '-40% 0px -60% 0px' });
+
+        document.querySelectorAll('div[id^="jour-"], section#pratique').forEach(s => observer.observe(s));
+    </script>
+</body>
+</html>
